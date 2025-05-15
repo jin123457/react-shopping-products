@@ -9252,7 +9252,7 @@ function Header({ cartItemList }) {
     /* @__PURE__ */ jsxRuntimeExports.jsx(HeaderTitle, { children: "SHOP" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(HeaderIconContainer, { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(BagIcon, {}),
-      cartItemList.length && /* @__PURE__ */ jsxRuntimeExports.jsx(CartBadge, { style: {}, children: cartItemList.length })
+      cartItemList.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(CartBadge, { children: cartItemList.length })
     ] })
   ] });
 }
