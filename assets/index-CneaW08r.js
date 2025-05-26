@@ -16281,7 +16281,11 @@ const resetCss = css`
 `;
 async function enableMocking() {
   const { worker } = await __vitePreload(() => import("./browser-CVgtKKUH.js"), true ? [] : void 0);
-  return worker.start();
+  await worker.start({
+    serviceWorker: {
+      url: "/react-shopping-products/mockServiceWorker.js"
+    }
+  });
 }
 enableMocking().then(() => {
   ReactDOM.createRoot(document.getElementById("root")).render(
