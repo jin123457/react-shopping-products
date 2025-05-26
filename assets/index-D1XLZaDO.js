@@ -15552,6 +15552,11 @@ const StyledModalTitle = newStyled(A.Title)`
 const StyledModalContainer = newStyled.div`
   display: flex;
   flex-direction: column;
+  gap: 16px;
+`;
+const NoCartProductText = newStyled.p`
+  font-size:16px;
+  margin-top:16px;
 `;
 const CloseButton = newStyled(A.CloseButton)`
   width: 100%;
@@ -15560,13 +15565,11 @@ const CloseButton = newStyled(A.CloseButton)`
   padding:12px;
   border-radius:8px;
   cursor: pointer;
-  margin-top: 16px;
 `;
 const productPriceContainer = newStyled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-top: 16px;
   font-size: 20px;
   font-weight: 700;
 `;
@@ -15794,14 +15797,14 @@ function Header() {
     /* @__PURE__ */ jsxRuntimeExports.jsx(HeaderTitle, { children: "SHOP" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(HeaderIconContainer, { onClick: () => setIsOpen((prev2) => !prev2), children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(BagIcon, {}),
-      cartItemList.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(CartBadge, { children: cartItemList.length })
+      cartItemList.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(CartBadge, { "data-testid": "cart-count", children: cartItemList.length })
     ] }),
     isOpen && /* @__PURE__ */ jsxRuntimeExports.jsxs(A, { onClose: close, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(A.BackDrop, {}),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(StyledModalContent, { position: "bottom", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(StyledModalTitle, { children: "장바구니" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(StyledModalContainer, { children: [
-          cartItemList.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "장바구니에 담긴 상품이 없습니다." }) : /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { children: cartItemList.map((item) => {
+          cartItemList.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(NoCartProductText, { children: "장바구니에 담긴 상품이 없습니다." }) : /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { children: cartItemList.map((item) => {
             const { imageUrl, name, price, id } = item.product;
             return /* @__PURE__ */ jsxRuntimeExports.jsx(ModalItem, { itemId: id, imageUrl, name, price }, id);
           }) }),
@@ -16032,7 +16035,7 @@ function ProductItem({ product }) {
   ] });
 }
 function ProductList({ productList }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(ProductListContainer, { children: productList.map((product) => /* @__PURE__ */ jsxRuntimeExports.jsx(ProductItem, { product }, product.id)) });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(ProductListContainer, { "data-testid": "product-list", children: productList.map((product) => /* @__PURE__ */ jsxRuntimeExports.jsx(ProductItem, { product }, product.id)) });
 }
 const MiddleContainer = newStyled.div`
   height:calc(100vh - 64px);
@@ -16099,7 +16102,7 @@ const Satellite2 = newStyled(Satellite)`
   left: -10%;
 `;
 function LoadingIcon() {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(LoadingIconContainer, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(OrbitSpinner, { children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(LoadingIconContainer, { role: "status", "aria-label": "로딩 중", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(OrbitSpinner, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Planet, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(Orbit, { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Satellite1, {}),
