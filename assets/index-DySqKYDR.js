@@ -15917,8 +15917,13 @@ const ProductItemContainer = newStyled.div`
   border-radius:8px;
   overflow:hidden;
 `;
-const ProductItemImage = newStyled.img`
+const ProductItemImageContainer = newStyled.div`
+  position: relative;
   height:112px;
+  width:100%;
+`;
+const ProductItemImage = newStyled.img`
+  height:100%;
   width:100%;
   object-fit:cover;
 `;
@@ -15941,6 +15946,21 @@ const ProductName = newStyled.p`
 `;
 const ProductPrice = newStyled.p`
   font-size:12px;
+`;
+const NoProductItem = newStyled.button`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const NoProductItemText = newStyled.b`
+  color: white;
+  font-size: 22px;
 `;
 function AddProductIcon() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
@@ -15975,17 +15995,20 @@ const blackDefaultImage = "/react-shopping-products/assets/blackDefaultImage-Cst
 function ProductItem({ product }) {
   const { quantity, isInCart, text, keyword, handleProductItem } = useProductItem(product.id);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(ProductItemContainer, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      ProductItemImage,
-      {
-        src: product.imageUrl,
-        alt: product.name,
-        onError: (e3) => {
-          e3.currentTarget.src = blackDefaultImage;
-          e3.currentTarget.onerror = null;
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(ProductItemImageContainer, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        ProductItemImage,
+        {
+          src: product.imageUrl,
+          alt: product.name,
+          onError: (e3) => {
+            e3.currentTarget.src = blackDefaultImage;
+            e3.currentTarget.onerror = null;
+          }
         }
-      }
-    ),
+      ),
+      product.quantity == 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(NoProductItem, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(NoProductItemText, { children: "품절" }) })
+    ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(ProductItemBottom, { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(ProductItemDetailBox, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(ProductName, { children: product.name }),
@@ -15994,7 +16017,7 @@ function ProductItem({ product }) {
           "원"
         ] })
       ] }),
-      isInCart ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+      product.quantity > 0 && (isInCart ? /* @__PURE__ */ jsxRuntimeExports.jsx(
         QuantityButton,
         {
           quantity,
@@ -16004,7 +16027,7 @@ function ProductItem({ product }) {
       ) : /* @__PURE__ */ jsxRuntimeExports.jsxs(Button, { keyWord: keyword, onClick: () => handleProductItem("add", product.id), children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(AddProductIcon, {}),
         text
-      ] })
+      ] }))
     ] })
   ] });
 }
@@ -16280,7 +16303,7 @@ const resetCss = css`
   }
 `;
 async function enableMocking() {
-  const { worker } = await __vitePreload(() => import("./browser-CVgtKKUH.js"), true ? [] : void 0);
+  const { worker } = await __vitePreload(() => import("./browser-0yAaFXrg.js"), true ? [] : void 0);
   await worker.start({
     serviceWorker: {
       url: "/react-shopping-products/mockServiceWorker.js"
