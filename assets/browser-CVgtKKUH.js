@@ -18935,7 +18935,7 @@ const dummyData = {
   numberOfElements: 20,
   empty: false
 };
-const BASE_URL = "http://techcourse-lv2-alb-974870821.ap-northeast-2.elb.amazonaws.com";
+const BASE_URL = "https://techcourse-lv2-alb-974870821.ap-northeast-2.elb.amazonaws.com";
 let productCart = [];
 const handlers = [
   http.all("*", async () => {

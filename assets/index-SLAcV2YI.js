@@ -15656,7 +15656,7 @@ const DEFAULT_ERROR_MESSAGE = "알 수 없는 오류가 발생했습니다.";
 const apiClient = async (apiConfigs, query, params) => {
   var _a;
   const newParams = new URLSearchParams(params);
-  const newUrl = `${"http://techcourse-lv2-alb-974870821.ap-northeast-2.elb.amazonaws.com"}${query}?${newParams.toString()}`;
+  const newUrl = `${"https://techcourse-lv2-alb-974870821.ap-northeast-2.elb.amazonaws.com"}${query}?${newParams.toString()}`;
   const options = {
     method: apiConfigs.method,
     headers: {
@@ -16280,7 +16280,7 @@ const resetCss = css`
   }
 `;
 async function enableMocking() {
-  const { worker } = await __vitePreload(() => import("./browser-CfG1rtuB.js"), true ? [] : void 0);
+  const { worker } = await __vitePreload(() => import("./browser-CVgtKKUH.js"), true ? [] : void 0);
   return worker.start();
 }
 enableMocking().then(() => {
