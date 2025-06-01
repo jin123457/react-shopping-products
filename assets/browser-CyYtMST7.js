@@ -18722,7 +18722,7 @@ const dummyData = {
       price: 153e3,
       imageUrl: "https://i.namu.wiki/i/tt29pghBdey0wco_4ZnHB4-iMuLnJGqo6bqm_piLdbs8XeWe4e6AnSbjKoSXzuVyvw9U-42zK1d_KFLxgdxv4A.webp",
       category: "패션잡화",
-      quantity: 50
+      quantity: 3
     },
     {
       id: 6,
@@ -18730,7 +18730,7 @@ const dummyData = {
       price: 45e3,
       imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStLWjM9ANPXZ5iWGLgvNsjBojvR4M--CaqmA&s",
       category: "식료품",
-      quantity: 50
+      quantity: 4
     },
     {
       id: 7,
@@ -18850,7 +18850,7 @@ const dummyData = {
       price: 2100,
       imageUrl: "https://sitem.ssgcdn.com/88/19/87/item/0000006871988_i1_750.jpg",
       category: "식료품",
-      quantity: 50
+      quantity: 4
     },
     {
       id: 35,
